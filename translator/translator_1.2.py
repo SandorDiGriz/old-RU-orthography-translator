@@ -3,22 +3,26 @@ import os
 from os import path
 import excep_dict
 
+
 def main():
     dict = excep_dict.get_dictionary()
     for current_file in get_files():
-        output_file_name = current_file.split('.')[0] + '_translated.txt'
-        input_file = open(current_file, encoding="utf-8")
-        output_file = open(output_file_name, 'w', encoding="utf-8")                                            												                               
-        result = []
-        input_line = str										                                
-        for line in input_file:
-            input_line = line
-            line = replace(line)
-            line = check_for_exception(dict, line, tokenisation(input_line))
-            result.append(line)
-            output_file.write(line)
-        input_file.close()
-        output_file.close()
+        if current_file.split('.')[-1] == 'txt':
+            output_file_name = current_file.split('.')[0] + '_translated.txt'
+            input_file = open(current_file, encoding="utf-8")
+            output_file = open('translated_files' + '\\' + output_file_name, 'w', encoding="utf-8")                                            												                               
+            result = []
+            input_line = str										                                
+            for line in input_file:
+                input_line = line
+                line = replace(line)
+                line = check_for_exception(dict, line, tokenisation(input_line))
+                result.append(line)
+                output_file.write(line)
+            input_file.close()
+            output_file.close()
+        else:
+            continue
     return ''.join(result)
 
 
@@ -56,10 +60,12 @@ def replace(data):
 
 
 def get_files():
-    print("please, type the name of folder\nremember to put in programm's directory")
-    path = os.path.abspath(input())
+    print("please, type the path to your folder")
+    path = input()
     os.chdir(path)
     list_of_files = os.listdir(path)
+    if not os.path.exists(path + r'/translated_files'):
+        os.mkdir('translated_files')
     return list_of_files
 
 
