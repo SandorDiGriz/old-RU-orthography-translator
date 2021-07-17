@@ -21,8 +21,6 @@ def main():
                 output_file.write(line)
             input_file.close()
             output_file.close()
-        else:
-            continue
     return ''.join(result)
 
 
