@@ -1,3 +1,4 @@
+'''REGEX dictionary'''
 def get_rules():
     rules_dict = {r'Ѣ': r'Е',
                   r'ѣ': r'е',
