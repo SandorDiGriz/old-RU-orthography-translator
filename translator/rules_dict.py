@@ -1,5 +1,5 @@
-'''REGEX dictionary'''
 def get_rules():
+    '''REGEX dictionary'''
     rules_dict = {r'Ѣ': r'Е',
                   r'ѣ': r'е',
                   r'Ѳ': r'Ф',
