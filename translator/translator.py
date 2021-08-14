@@ -94,7 +94,6 @@ def main():
             input_file = open(current_file, encoding="utf-8")
             # Creating translated copy of the file in generated folder
             output_file = open('translated_files' + '\\' + output_file_name, 'w', encoding="utf-8")                                            												                               
-            result = []
             # Line for tokenization
             input_line = str										                                
             for line in input_file:
@@ -103,11 +102,10 @@ def main():
                 line = replace(line)
                 # Checking for possible matches with exception dictionary
                 line = check_for_exception(dict, line, tokenization(input_line))
-                result.append(line)
                 output_file.write(line)
             input_file.close()
             output_file.close()
-    return ''.join(result)
+    return 0
 
 
 main()
